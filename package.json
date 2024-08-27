@@ -1,0 +1,56 @@
+{
+  "name": "zen-website-backend",
+  "version": "0.0.1",
+  "description": "Node.js boilerplate using fastify & TypeScript",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "check:types": "tsc --noEmit",
+    "build": "esbuild `find src \\( -name '*.ts' \\)` --platform=node --outdir=build --resolve-extensions=.js",
+    "build:docker:prod": "docker build . -t my-fastify-app --build-arg APP_ENV=production",
+    "start": "node build",
+    "dev": "tsx watch src .env | pino-pretty --colorize",
+    "pretest": "npm run build",
+    "test": "vitest",
+    "test:watch": "vitest -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zen-browser"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "nodejs",
+    "fastify",
+    "typescript"
+  ],
+  "author": "Aykut Akgün",
+  "license": "MIT",
+  "homepage": "https://github.com/zen-browser",
+  "dependencies": {
+    "@sinclair/typebox": "^0.23.5",
+    "@supabase/supabase-js": "^2.45.2",
+    "ajv": "^8.11.2",
+    "dotenv": "^16.0.3",
+    "env-schema": "^5.1.1",
+    "fastify": "^4.10.2",
+    "fastify-plugin": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.15",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "esbuild": "^0.14.54",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "pino-pretty": "^8.1.0",
+    "prettier": "^2.8.0",
+    "tsx": "^3.12.1",
+    "typescript": "^4.9.3",
+    "vitest": "^0.25.8"
+  }
+}
